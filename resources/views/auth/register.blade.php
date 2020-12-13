@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <a class="btn btn-primary" href="{{ route('adminregister') }}">Click Here to Register as Admin</a>
+
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -60,6 +60,20 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="user" type="radio" name="account_type" value="user" checked="checked">
+                            </div>
+                            <label for="user">{{ __('Create as User') }}</label>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="admin" type="radio" name="account_type" value="admin">
+                            </div>
+                            <label for="admin">{{ __('Create as Admin') }}</label>
                         </div>
 
                         <div class="form-group row mb-0">

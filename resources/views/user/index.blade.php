@@ -14,14 +14,16 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in as User!') }}
+                    Welcome, {{ Auth::user()->name }}
                 </div>
             </div>
 
             <!-- Start of Home Content -->
-            <div class="mt-5 text-center">
-                 <h3 style="color: #EF3B2D">Welcome User!</h3>
-                 <p>This is the User Page.</p>
+            <div class="mt-5">
+                 <h3 style="color: #EF3B2D">User Information:</h3>
+                 <p><strong style="color: #EF3B2D">Username:</strong> {{ Auth::user()->name }}</p>
+                 <p><strong style="color: #EF3B2D">Email: </strong>{{ Auth::user()->email }}</p>
+                 <p><strong style="color: #EF3B2D">Account Role: </strong>User</p>
             </div>
 
         </div>

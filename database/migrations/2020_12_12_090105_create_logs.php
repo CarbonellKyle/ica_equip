@@ -18,7 +18,7 @@ class CreateLogs extends Migration
             $table->string('borrower_name');
             $table->foreignId('equipment_id');
             $table->dateTime('datetime_borrowed');
-            $table->dateTime('datetime_returned');
+            $table->dateTime('datetime_returned')->nullable();
             $table->timestamps();
         });
     }

@@ -29,7 +29,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user';
+    protected $redirectTo = '/login';
+
+    protected function redirectTo()
+    {
+        if (auth()->user()->hasRole('administrator')) {
+            return '/admin';
+        }
+        return '/user';
+    }
 
     /**
      * Create a new controller instance.
@@ -53,6 +61,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'account_type' => ['required', 'string'],
         ]);
     }
 
@@ -69,7 +78,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $user->attachRole('user');
+        
+        $account_type = $data['account_type'];
+        if($account_type=='user'){
+            $user->attachRole('user');
+        }
+        else{
+            $user->attachRole('administrator');
+        }
         return $user;
     }
 }
